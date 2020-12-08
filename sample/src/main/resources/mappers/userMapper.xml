@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javalec.web.user.userMapper">
+
+	<select id="getUserInfo"
+		resultType="com.javalec.web.user.model.UserVO"
+		parameterType="com.javalec.web.user.model.UserVO">
+		SELECT
+			uid
+			, name
+			, pwd
+			, email
+		FROM
+		tbl_user
+		WHERE
+		uid = #{uid}
+	</select>
+
+	<select id="getLogin"
+		resultType="com.javalec.web.user.model.UserVO"
+		parameterType="com.javalec.web.user.model.UserVO">
+		SELECT
+		pwd
+		FROM
+		tbl_user
+		WHERE
+		uid = #{uid}
+		AND
+		pwd = #{pwd}
+	</select>
+	
+	<select id="getMember" resultType="com.javalec.web.user.model.UserVO">
+		SELECT 
+			uid
+			, part
+		FROM
+			tbl_user
+		ORDER BY RAND() LIMIT 7
+	</select>
+
+	<insert id="insertUser"
+		parameterType="com.javalec.web.user.model.UserVO"> 
+		INSERT INTO 
+			TBL_USER (UID, NAME, PWD, EMAIL, PART)
+		VALUES 
+			( #{uid} 
+			, #{name} 
+			, #{pwd} 
+			, #{email}
+			, #{part}
+			)
+	</insert>
+	
+	<update id="updateUser" 
+		parameterType="com.javalec.web.user.model.UserVO">
+			UPDATE tbl_user SET
+				name = #{name}
+				, pwd = #{pwd}
+				, email = #{email}
+			WHERE
+				uid = #{uid}
+		</update> 
+
+
+
+
+</mapper>
