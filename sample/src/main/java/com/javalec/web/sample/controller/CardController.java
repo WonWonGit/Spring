@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.javalec.web.sample.model.CardVO;
 import com.javalec.web.sample.service.CardService;
@@ -158,30 +159,19 @@ public class CardController {
 		model.addAttribute("visitSet", cardService.visitSetList(uid));
 		return "card/visit";
 	}
-	@RequestMapping(value = "/visitCard", method = RequestMethod.GET)
-	public String visitCard(Model model
-							,@RequestParam("uid") String uid
-							,@RequestParam("list_name") String list_name
-							,HashMap<String, Object> map) throws Exception{
-		model.addAttribute("cardVO", new CardVO());
-		map.put("list_name", list_name);
-		map.put("uid", uid);
-		model.addAttribute("visitCard", cardService.showCard2(map));
-		System.out.println(uid+list_name);
-		return "card/visitCard";
-	}
+
 	
 	@RequestMapping(value = "/bookMark", method = RequestMethod.GET)
-	public String bookmark(@ModelAttribute("cardVO") CardVO cardVO, Model model, HttpServletResponse response) throws Exception {
+	public String bookmark(@ModelAttribute("cardVO") CardVO cardVO, Model model, HttpServletResponse response, RedirectAttributes redirectAttributes) throws Exception {
 		int result = cardService.bookMark(cardVO);
 		if(result==0) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('다시 시도해 주세요.');</script>"); 
+			out.println("<script>alert('이미 추가 북마크에 추가되어있습니다.'); history.go(-1); </script>");
 			out.flush();
 		}
 		System.out.println(cardVO.uid+cardVO.list_name);
-		return "redirect:/card/card";
+		return "card/card";
 	}
 	
 	@RequestMapping(value = "/bookMarkList", method = RequestMethod.GET)

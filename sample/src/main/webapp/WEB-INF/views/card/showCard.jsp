@@ -53,6 +53,10 @@
 		}
 
 	}
+	function bookmark(){
+		alert('로그인 후 이용부탁드립니다.');
+		window.location.href="signup";
+	}
 </script>
 <style>
 </style>
@@ -66,6 +70,27 @@
 			</h3>
 		</div>
 		<!-- 카드 뒤집기 -->
+		<div class="w-75 text-right" style="margin-bottom:5%; position:relative;">
+		<c:choose>
+			<c:when test="${sessionScope.userId != param.uid}">
+			<c:choose>
+				<c:when test="${sessionScope.userId == null}">
+					<button onclick="bookmark()" class="btn btn-warning">BookMark <i class="fas fa-bookmark"></i></button>
+				</c:when>
+				<c:when test="${sessionScope.userId != null}">
+				<form:form method="get" name="form" id="form2" class="form-card"
+				role="form" modelAttribute="cardVO" 
+				action="${pageContext.request.contextPath}/card/bookMark">
+				<form:input path="bookmark" value="${param.uid }" style="display:none;"/>
+				<form:input path="bookmark" value="${param.list_name }" style="display:none;"/>
+				<form:input path="uid" value="${sessionScope.userId}" style="display:none;"/>
+				<button type="submit" class="btn btn-warning">BookMark <i class="fas fa-bookmark"></i></button>
+			</form:form>
+			</c:when>
+			</c:choose>
+			</c:when>
+		</c:choose>
+		</div>
 		<div id="carouselExampleFade" class="carousel slide carousel-fade"
 			data-ride="carousel">
 			<div class="carousel-inner text-center"
