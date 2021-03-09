@@ -90,7 +90,7 @@
 				<div class="form-group">
 					<i class="fas fa-lock"></i>
 					<label for="formGroupExampleInput3">Password</label> <form:password path="pwd"
-					 class="form-control" id="pwdp"
+					 class="form-control" id="pwd"
 						placeholder="password"/>
 				</div>
 				<br>
@@ -119,15 +119,15 @@
 				<br>
 				<div class="form-group">
 					<i class="fas fa-lock"></i>
-					<label for="formGroupExampleInput3">Password</label> <form:password path="pwd"
-					 class="form-control" id="pwd"
+					<label for="formGroupExampleInput3">Password</label> <form:input path="pwd"
+					 class="form-control" id="pwd" type="password" 
 						placeholder="password"/>
 				</div>
 				<br>
 				<div class="form-group">
 					<i class="fas fa-check"></i>
 					<label for="formGroupExampleInput3">Password Check</label> <input
-						type="password" class="form-control" id="pwd2"
+						type="password" class="form-control" id="pwd2" type="password" 
 						placeholder="password">
 				</div>
 				<br>

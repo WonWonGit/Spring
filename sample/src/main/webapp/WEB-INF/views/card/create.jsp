@@ -42,7 +42,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="../main/header.jsp" />
 	<div class="container text-center create">
 		<h4>새로운 학습세트 만들기</h4>
 	</div>
@@ -89,7 +89,7 @@
 			<c:forEach var="list" items="${selectSet}">
 			<div class="col-6 col-md-4 text-center book">
 				<div class="book_title">
-					<a href="${pageContext.request.contextPath}/card/showCard?list_name=<c:out value="${list.list_name}"/>&page=1&range=1">
+					<a href="${pageContext.request.contextPath}/card/showCard?list_name=<c:out value="${list.list_name}"/>&uid=<c:out value="${sessionScope.userId}"/>&page=1&range=1">
 					<c:out value="${list.list_name}" />
 					</a>	
 				</div>

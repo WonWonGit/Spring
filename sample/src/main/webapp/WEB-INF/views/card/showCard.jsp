@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!--파라미터로 넘어온 아이디랑 세션값 비교해서 수정 삭제부분 안보이게 하기-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +58,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="../main/header.jsp" />
 	<div class="list_name" style="padding-top: 10%; padding-bottom: 5%;">
 		<div class=" text-center" style="margin-bottom: 10%; color: #008B8B;">
 			<h3>
@@ -98,10 +99,10 @@
 				class="sr-only">Next</span>
 			</a>
 		</div>
-
-		<!-- 카드 뒤집기 -->
 		<!-- 카드 추가 -->
-		<div class="col" style="margin-bottom: 3%;">
+		<c:choose>
+			<c:when test="${sessionScope.userId == param.uid}">
+				<div class="col" style="margin-bottom: 3%;">
 			<form:form method="get" name="form" id="form2" class="form-card"
 				role="form" modelAttribute="cardVO"
 				action="${pageContext.request.contextPath}/card/insertCard">
@@ -129,6 +130,8 @@
 				</div>
 			</form:form>
 		</div>
+			</c:when>
+		</c:choose>
 	</div>
 	<!-- 카드 추가 -->
 	<!-- 수정 또는 삭제기능 -->
@@ -137,16 +140,20 @@
 			<h3>이 세트의 단어(${cnt})</h3>
 		</div>
 		<!-- 카드 네비바 -->
+		<c:choose>
+		<c:when test="${sessionScope.userId == param.uid }">
 		<div class="w-75" style="margin: 0 auto;">
 			<ul class="nav nav-pills mb-3 justify-content-end" id="pills-tab" role="tablist">
 			<li class="nav-item"><a class="nav-link active"
 				id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
 				aria-controls="pills-home" aria-selected="true">전체보기</a></li>
-			<li class="nav-item"><a class="nav-link" id="pills-profile-tab"
+				<li class="nav-item"><a class="nav-link" id="pills-profile-tab"
 				data-toggle="pill" href="#pills-profile" role="tab"
 				aria-controls="pills-profile" aria-selected="false">중요표시( ${impCnt} )</a></li>
-			</ul>
+			</ul>	
 		</div>
+		</c:when>
+		</c:choose>	
 		<div class="tab-content" id="pills-tabContent">
 			<!-- 전체보기 -->
 			<div class="tab-pane fade show active" id="pills-home"
@@ -161,7 +168,9 @@
 				%>
 				<c:forEach var="list" items="${tableList}">
 					<div class="card w-75" style="margin: 0 auto; margin-bottom: 5%;">
-						<div class="card-title text-right"
+					<c:choose>
+						<c:when test="${sessionScope.userId == param.uid}">
+							<div class="card-title text-right"
 							style="padding-right: 2%; margin-bottom: 0;">
 							<!-- 버튼 클릭시 폼태그 보이도록 -->
 							<button type="button" class="btn icon icon-edit"
@@ -224,6 +233,8 @@
 								<i class="fas fa-trash-alt"></i>
 							</button>
 						</div>
+						</c:when>
+					</c:choose>
 						<div class="card-body row"
 							id="<c:out value="${list.card_num}_card" />">
 							<div class="col-4 text-center"

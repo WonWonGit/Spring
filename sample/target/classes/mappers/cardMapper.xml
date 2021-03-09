@@ -141,12 +141,23 @@
 			#{uid},
 			#{bookmark}
 		)
+		WHERE NOT EXIST
+		(SELECT #{bookmark},#{uid} 
+		   FROM bookmark 
+		   WHERE uid=#{uid} and bookmark=#{bookmark} )
 	</insert>
 	
 	<select id="bookMarkList" resultType="com.javalec.web.sample.model.CardVO" parameterType="String">
-		SELECT bookmark 
-		FROM bookmark
-		WHERE uid=#{uid}	
+		SELECT no, bookmark, list_explain
+		FROM bookmark b JOIN set_list s 
+		ON b.bookmark=s.list_name
+		WHERE b.uid=#{uid}
 	</select>
+	
+	<delete id="deleteBookMark" parameterType="int">
+		DELETE 
+		FROM bookmark 
+		WHERE no=#{no}
+	</delete>
 
 </mapper>

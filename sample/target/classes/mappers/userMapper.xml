@@ -6,12 +6,13 @@
 
 	<select id="getUserInfo"
 		resultType="com.javalec.web.user.model.UserVO"
-		parameterType="com.javalec.web.user.model.UserVO">
+		parameterType="String">
 		SELECT
 			uid
 			, name
 			, pwd
 			, email
+			, part
 		FROM
 		tbl_user
 		WHERE
@@ -56,12 +57,12 @@
 	<update id="updateUser" 
 		parameterType="com.javalec.web.user.model.UserVO">
 			UPDATE tbl_user SET
-				name = #{name}
-				, pwd = #{pwd}
+				 pwd = #{pwd}
 				, email = #{email}
+				, part = #{part}
 			WHERE
 				uid = #{uid}
-		</update> 
+	</update> 
 
 
 

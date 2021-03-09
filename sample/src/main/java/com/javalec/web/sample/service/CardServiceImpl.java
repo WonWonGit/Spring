@@ -101,6 +101,18 @@ public class CardServiceImpl implements CardService{
 		return cardDAO.bookMark(cardVO);
 	}
 
+	@Override
+	public List<CardVO> bookMarkList(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		return cardDAO.bookMarkList(uid);
+	}
+
+	@Override
+	public int deleteBookMark(int no) throws Exception {
+		// TODO Auto-generated method stub
+		return cardDAO.deleteBookMark(no);
+	}
+
 	
 
 }

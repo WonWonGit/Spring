@@ -16,7 +16,7 @@
 </style>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand logo" href="#" style="color: white;">HighLighter<i
+		<a class="navbar-brand logo" href="${pageContext.request.contextPath}/card/card" style="color: white;">HighLighter<i
 			class="fas fa-highlighter" style="color: white;"></i></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
@@ -35,7 +35,7 @@
 					</c:when>
 					<c:when test="${sessionScope.userId != null}">
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/card/logout">Logout</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Account</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/card/getUserInfo">Account</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
@@ -51,7 +51,7 @@
 								<button type="submit" class="btn dropdown-item" style="background-color:white; color:black;">카드만들기</button>
 								</form:form>
 								 <a
-									class="dropdown-item" href="#">Something else here</a>
+									class="dropdown-item" href="${pageContext.request.contextPath}/card/bookMarkList">북마크 리스트 보기</a>
 							</div></li>
 					</c:when>
 				</c:choose>

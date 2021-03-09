@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>    
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 부트스트랩 -->
@@ -43,7 +43,7 @@
 	}
 </script>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="../main/header.jsp" />
 	<div class="list_name" style="padding-bottom: 5%;">
 		<div class=" text-center" style=" color: #008B8B; margin-top:3%;">
 			<h3>
@@ -60,12 +60,12 @@
 					<button onclick="bookmark()" class="btn btn-warning">BookMark <i class="fas fa-bookmark"></i></button>
 				</c:when>
 				<c:when test="${sessionScope.userId != null}">
-					<form:form method="get" name="form" id="form2" class="form-card"
-				role="form" modelAttribute="cardVO"
+				<form:form method="get" name="form" id="form2" class="form-card"
+				role="form" modelAttribute="cardVO" 
 				action="${pageContext.request.contextPath}/card/bookMark">
-				<form:input path="bookmark" value="${param.uid }"/>
-				<form:input path="bookmark" value="${param.list_name }"/>
-				<form:input path="uid" value="${sessionScope.userId}"/>
+				<form:input path="bookmark" value="${param.uid }" style="display:none;"/>
+				<form:input path="bookmark" value="${param.list_name }" style="display:none;"/>
+				<form:input path="uid" value="${sessionScope.userId}" style="display:none;"/>
 				<button type="submit" class="btn btn-warning">BookMark <i class="fas fa-bookmark"></i></button>
 			</form:form>
 				</c:when>
@@ -102,6 +102,31 @@
 				class="sr-only">Next</span>
 			</a>
 		</div>
-		</div>
+		<!-- 전체목록 -->
+		<div class="card-table bg-light col" style="padding-top: 5%;"">
+			<c:choose>
+					<c:when test="${empty visitCard }">
+					데이터가 없습니다.
+				</c:when>
+					<c:when test="${!empty visitCard}">
+						<c:forEach var="list" items="${visitCard}">
+						<div class="card w-75" style="position:relative; margin:0 auto; margin-bottom:5%;">
+							<div class="card-body row " style="backgroud:#fff;">
+								<div class="word col-4 text-center"
+								style="border-right: 1px solid #ccc;">
+									<c:out value="${list.word}" />
+								</div>
+								<div class="meaning col-8">
+									<c:out value="${list.meaning}" />
+								</div>		
+							</div>
+						</div>		
+						</c:forEach>
+					</c:when>
+				</c:choose>
+			</div>
+		</div> 
+		
+		
 </body>
 </html>

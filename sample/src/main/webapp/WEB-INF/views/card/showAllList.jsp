@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>    
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import="com.javalec.web.sample.model.CardVO"%>
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 부트스트랩 -->
@@ -26,48 +27,26 @@
 <script src="https://kit.fontawesome.com/9db93bd103.js"
 	crossorigin="anonymous"></script>
 <!-- 부트스트랩 END -->
+<link href="<c:url value="/resources/css/create_style.css" />"
+	rel="stylesheet">
 </head>
-<style>
-.book{
-		position:relative;
-		margin-bottom:10%;
-	}
-.book_title{
-	position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width: 50%;
-	z-index:999;
-}
-.book:hover .book_img{
-	-webkit-transform:scale(1.2);
-    -moz-transform:scale(1.2);
-    -ms-transform:scale(1.2);   
-    -o-transform:scale(1.2);
-    transform:scale(1.2);
-    transition:.7s;
-}
-.book_explain{
-	margin-top:5%;
-}
-</style>
 <body>
-<jsp:include page="../main/header.jsp" />
-<div class="text-center" style="padding-top:5%;">
-	<h4>${param.uid}님의 셋트</h4>
-</div>
-<div style="padding:10%; margin-top:5%; background-color:honeydew;">
 <c:choose>
-		<c:when test="${empty visitSet }">
+		<c:when test="${empty selectSet }">
 		<div class="set_list text-center">
 		<h4>나의 학습세트</h4>
 		데이터가 없습니다.
 		</div>
 		</c:when>
-		<c:when test="${!empty visitSet}">
+		<c:when test="${!empty selectSet}">
+		<div class="set_list text-center">
+		<h4>나의 학습세트</h4>
 		<div class="container set_list">
 		<div class="row" style="margin:0 auto;">
-			<c:forEach var="list" items="${visitSet}">
+			<c:forEach var="list" items="${selectSet}">
 			<div class="col-6 col-md-4 text-center book">
 				<div class="book_title">
-					<a href="${pageContext.request.contextPath}/card/showCard?list_name=<c:out value="${list.list_name}"/>&uid=<c:out value="${param.uid}"/>&page=1&range=1">
+					<a href="${pageContext.request.contextPath}/card/showCard?list_name=<c:out value="${list.list_name}"/>&uid=<c:out value="${sessionScope.userId}"/>&page=1&range=1">
 					<c:out value="${list.list_name}" />
 					</a>	
 				</div>
@@ -80,11 +59,11 @@
 					<c:out value="${list.list_explain}" />
 				</div>
 			</div>
-			</c:forEach>
-			</div>
-			</div>
-		</c:when>	
+		</c:forEach>
+		</div>
+		</div>
+		</div>
+		</c:when>
 	</c:choose>
-</div>
 </body>
 </html>

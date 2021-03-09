@@ -2,6 +2,7 @@ package com.javalec.web.sample.model;
 
 import com.javalec.web.sample.tool.Pagination;
 
+
 public class CardVO {
 
 	public int card_num;
@@ -14,6 +15,7 @@ public class CardVO {
 	public String list_explain;
 	public String privacy;
 	public String bookmark;
+	public int no;
 	Pagination pagination;
 	
 	public int getCard_num() {
@@ -84,11 +86,18 @@ public class CardVO {
 	public void setBookmark(String bookmark) {
 		this.bookmark = bookmark;
 	}
+	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	@Override
 	public String toString() {
 		return "CardVO [card_num=" + card_num + ", word=" + word + ", meaning=" + meaning + ", important=" + important
 				+ ", user=" + user + ", uid=" + uid + ", list_name=" + list_name + ", list_explain=" + list_explain
-				+ ", privacy=" + privacy + ", bookmark=" + bookmark + ", pagination=" + pagination + "]";
+				+ ", privacy=" + privacy + ", bookmark=" + bookmark + ", no=" + no + ", pagination=" + pagination + "]";
 	}
 	
 	

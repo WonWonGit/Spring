@@ -45,7 +45,7 @@ public class CardController {
 			out.println("<script>alert('다시 시도 해 주세요.');</script>"); 
 			out.flush();
 		}
-		return "redirect:/card/create";
+		return "redirect:/card/create?uid="+cardVO.uid;
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -67,13 +67,13 @@ public class CardController {
 	@RequestMapping(value="/showCard", method=RequestMethod.GET)
 	public String showCard(Model model, HashMap<String, Object> map, HttpSession session
 						  , @RequestParam("list_name") String list_name
+						  , @RequestParam("uid") String uid
 						  , @RequestParam(required = false, defaultValue = "1") int page
 						  , @RequestParam(required = false, defaultValue = "1") int range
 						  , @RequestParam(required = false, defaultValue = "1") int ipage
 						  , @RequestParam(required = false, defaultValue = "1") int irange) throws Exception{
 		Pagination pagination = new Pagination();
 		Pagination importantPagination = new Pagination();
-		Object uid = session.getAttribute("userId");
 		model.addAttribute("cardVO", new CardVO());
 		map.put("uid", uid);
 		map.put("list_name", list_name);
@@ -100,7 +100,7 @@ public class CardController {
 	
 	
 	@RequestMapping(value="/insertCard", method=RequestMethod.GET)
-	public String insertCard(@ModelAttribute("cardVO") CardVO cardVO, Model model, HttpServletResponse response) throws Exception {
+	public String insertCard(@ModelAttribute("cardVO") CardVO cardVO, Model model, HttpServletResponse response, HttpSession session) throws Exception {
 		int result = cardService.insertCard(cardVO);
 		if(result==0) {
 			response.setContentType("text/html; charset=UTF-8");
@@ -170,6 +170,7 @@ public class CardController {
 		System.out.println(uid+list_name);
 		return "card/visitCard";
 	}
+	
 	@RequestMapping(value = "/bookMark", method = RequestMethod.GET)
 	public String bookmark(@ModelAttribute("cardVO") CardVO cardVO, Model model, HttpServletResponse response) throws Exception {
 		int result = cardService.bookMark(cardVO);
@@ -181,6 +182,26 @@ public class CardController {
 		}
 		System.out.println(cardVO.uid+cardVO.list_name);
 		return "redirect:/card/card";
+	}
+	
+	@RequestMapping(value = "/bookMarkList", method = RequestMethod.GET)
+	public String visitSetList(@ModelAttribute("cardVO") CardVO cardVO, Model model, HttpSession session) throws Exception{
+		model.addAttribute("cardVO", new CardVO());
+		String uid = (String) session.getAttribute("userId");
+		model.addAttribute("bookMarkList", cardService.bookMarkList(uid));
+		return "card/bookMarkList";
+	}
+	@RequestMapping(value = "/deleteBookMark", method = RequestMethod.GET)
+	public String deleteBookMark(@ModelAttribute("cardVO") CardVO cardVO, HttpServletResponse response) throws Exception{
+		int no=cardVO.no;
+		int result = cardService.deleteBookMark(no);
+		if(result==0) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('다시 시도해 주세요.');</script>"); 
+			out.flush();
+		}
+		return "card/bookMarkList";
 	}
 	
 		

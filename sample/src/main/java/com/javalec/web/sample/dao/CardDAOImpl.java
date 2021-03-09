@@ -142,6 +142,24 @@ public class CardDAOImpl implements CardDAO{
 		return result;
 	}
 
+	@Override
+	public List<CardVO> bookMarkList(String uid) throws Exception {
+		return sqlSession.selectList("com.javalec.web.sample.cardMapper.bookMarkList",uid);
+	}
+
+	@Override
+	public int deleteBookMark(int no) throws Exception {
+		int result=0;
+		try {
+			result=sqlSession.insert("com.javalec.web.sample.cardMapper.deleteBookMark",no);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
+	
 	
 
 }

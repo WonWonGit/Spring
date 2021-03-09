@@ -23,4 +23,6 @@ public interface CardService {
 	public int deleteCard(CardVO cardVO) throws Exception;
 	public List<CardVO> visitSetList(String uid) throws Exception;
 	public int bookMark(CardVO cardVO) throws Exception;
+	public List<CardVO> bookMarkList(String uid) throws Exception;
+	public int deleteBookMark(int no) throws Exception;
 }

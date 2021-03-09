@@ -45,17 +45,17 @@ function start(){
 <style> 
 </style>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="../main/header.jsp" />
 	<c:if test="${sessionScope.userId != null}">
 	<c:out value="${sessionScope.userId}"/>님 환영합니다!
 </c:if>
-<div id="carouselExampleControls" class="carousel slide main-slide" data-ride="carousel" >
-  <div class="carousel-inner container" style="">
-    <div class="carousel-item active">
+<div id="carouselExampleControls" class="carousel slide main-slide" data-ride="carousel" style="height:200%;">
+  <div class="carousel-inner container" style="position:relative; height:200%; padding-top:10%; padding-bottom:10%;">
+    <div class="carousel-item active" >
     <div class="row">
     		<div class="col">
     		<img class="d-block" src="${pageContext.request.contextPath}/resources/img/mental.png" alt="First slide"
-      		style="width:40%; margin:0 auto;">
+      		style="width:40%; margin:0 auto; height:100%;">
       		</div>
     		<div class="col sub">
     		<h3>안녕하세요</h3>
@@ -102,7 +102,7 @@ function start(){
     <span class="sr-only">Next</span>
   </a>
 </div>
-	<div class="text-center">
+	<div class="text-center" style="padding-bottom:5%;">
 			<h3>다른사람들의 카드를 참고 해 보세요!</h3>
 	</div>
 	<c:choose>

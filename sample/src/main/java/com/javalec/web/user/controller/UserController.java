@@ -74,6 +74,40 @@ public class UserController {
 			
 		}
 	
+	@RequestMapping(value="/getUserInfo", method = RequestMethod.GET)
+	public String getUserInfo(Model model, HttpSession session, @ModelAttribute("cardVO") CardVO cardVO,  @ModelAttribute("UserVO") UserVO UserVO) throws Exception{
+		String uid=(String) session.getAttribute("userId");
+		
+		model.addAttribute("userInfo", userService.getUserInfo(uid));
+		//System.out.println(userService.getUserInfo(uid));
+		return "login/account";
+		
+	}
+	
+	@RequestMapping(value="/updateUser", method = RequestMethod.GET)
+	public String updateUser(@ModelAttribute("userVO") UserVO userVO, HttpServletResponse response) throws Exception {
+		int result = userService.updateUser(userVO);
+		if(result==0) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('다시 시도 부탁드립니다.');location.href='/card/account';</script>"); 
+			out.flush();
+		}
+		return "redirect:/card/getUserInfo";
+	}
+	
+	@RequestMapping(value="/test", method = RequestMethod.GET)
+	public String test(@ModelAttribute("userVO") UserVO userVO, HttpServletResponse response) throws Exception {
+		int result = userService.updateUser(userVO);
+		if(result==0) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('다시 시도 부탁드립니다.');location.href='/card/account';</script>"); 
+			out.flush();
+		}
+		return "redirect:/card/getUserInfo";
+	}
+	
 	//로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(UserVO uservo , Model model, HttpSession session) {
@@ -88,4 +122,4 @@ public class UserController {
 		
 		return "card/index";
 	}
-	}
+}

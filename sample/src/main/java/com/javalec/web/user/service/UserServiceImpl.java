@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
 	private UserDAO userDAO;
 	
 	@Override
-	public UserVO getUserInfo(String uid) throws Exception {
+	public List<UserVO> getUserInfo(String uid) throws Exception {
 		return userDAO.getUserInfo(uid);
 	}
 
@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void updateUser(UserVO userVO) throws Exception {
-		userDAO.updateUser(userVO);
+	public int updateUser(UserVO userVO) throws Exception {
+		return userDAO.updateUser(userVO);
 		
 	}
 

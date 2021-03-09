@@ -19,9 +19,8 @@ public class UserDAOImpl implements UserDAO{
 	
 
 	@Override
-	public UserVO getUserInfo(String uid) throws Exception {
-		return sqlSession.selectOne(
-				"com.javalec.web.user.userMapper.getUserInfo", uid);
+	public List<UserVO> getUserInfo(String uid) throws Exception {
+		return sqlSession.selectList("com.javalec.web.user.userMapper.getUserInfo",uid);
 	}
 
 	@Override
@@ -53,8 +52,15 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public int updateUser(UserVO userVO) throws Exception {
-		return sqlSession.update(
-				"com.javalec.web.user.userMapper.updateUser", userVO);
+		int result = 0;
+		try {
+			result = sqlSession.update(
+					"com.javalec.web.user.userMapper.updateUser", userVO);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+		return result;
 	}
 
 	@Override
