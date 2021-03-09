@@ -137,12 +137,12 @@
 	
 	<insert id="bookMark" parameterType="com.javalec.web.sample.model.CardVO">
 		INSERT INTO bookmark(uid,bookmark)
-		VALUES(
+		select
 			#{uid},
 			#{bookmark}
-		)
+		from dual 
 		WHERE NOT EXIST
-		(SELECT #{bookmark},#{uid} 
+		(SELECT bookmark,uid 
 		   FROM bookmark 
 		   WHERE uid=#{uid} and bookmark=#{bookmark} )
 	</insert>
