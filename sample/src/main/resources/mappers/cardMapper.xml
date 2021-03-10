@@ -159,5 +159,7 @@
 		FROM bookmark 
 		WHERE no=#{no}
 	</delete>
+	
+	
 
 </mapper>
