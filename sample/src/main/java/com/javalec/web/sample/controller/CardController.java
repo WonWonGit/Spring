@@ -181,6 +181,7 @@ public class CardController {
 		model.addAttribute("bookMarkList", cardService.bookMarkList(uid));
 		return "card/bookMarkList";
 	}
+	
 	@RequestMapping(value = "/deleteBookMark", method = RequestMethod.GET)
 	public String deleteBookMark(@ModelAttribute("cardVO") CardVO cardVO, HttpServletResponse response) throws Exception{
 		int no=cardVO.no;
@@ -194,6 +195,15 @@ public class CardController {
 		return "card/bookMarkList";
 	}
 	
-		
+	@RequestMapping(value = "/showAll", method = RequestMethod.GET)
+	public String showAll(@ModelAttribute("cardVO") CardVO cardVO, Model model, HttpSession session, HashMap<String, Object> map) throws Exception{
+		model.addAttribute("cardVO", new CardVO());
+		String uid = (String) session.getAttribute("userId");
+		map.put("uid", uid);
+		System.out.println(uid);
+		model.addAttribute("bookMarkList", cardService.bookMarkList(uid));
+		model.addAttribute("selectSet", cardService.selectSet(uid));
+		return "card/showAll";
+	}	
 
 }
