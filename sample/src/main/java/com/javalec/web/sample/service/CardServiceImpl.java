@@ -113,6 +113,12 @@ public class CardServiceImpl implements CardService{
 		return cardDAO.deleteBookMark(no);
 	}
 
+	@Override
+	public List<CardVO> myBookMark(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		return cardDAO.myBookMark(uid);
+	}
+
 	
 
 }

@@ -158,6 +158,12 @@ public class CardDAOImpl implements CardDAO{
 		return result;
 	}
 
+	@Override
+	public List<CardVO> myBookMark(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("com.javalec.web.sample.cardMapper.myBookMark",uid);
+	}
+
 
 	
 	

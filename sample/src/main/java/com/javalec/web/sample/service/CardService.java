@@ -25,4 +25,5 @@ public interface CardService {
 	public int bookMark(CardVO cardVO) throws Exception;
 	public List<CardVO> bookMarkList(String uid) throws Exception;
 	public int deleteBookMark(int no) throws Exception;
+	public List<CardVO> myBookMark(String uid) throws Exception;
 }
