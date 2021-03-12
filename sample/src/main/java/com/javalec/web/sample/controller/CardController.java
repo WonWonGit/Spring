@@ -201,7 +201,7 @@ public class CardController {
 		String uid = (String) session.getAttribute("userId");
 		map.put("uid", uid);
 		System.out.println(uid);
-		model.addAttribute("bookMarkList", cardService.bookMarkList(uid));
+		model.addAttribute("bookMarkList", cardService.myBookMark(uid));
 		model.addAttribute("selectSet", cardService.selectSet(uid));
 		return "card/showAll";
 	}	
