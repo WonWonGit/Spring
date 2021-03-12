@@ -160,6 +160,13 @@
 		WHERE no=#{no}
 	</delete>
 	
+	<select id="myBookMark" resultType="com.javalec.web.sample.model.CardVO" parameterType="String">
+		SELECT b.no, b.uid, b.bookmark, s.list_explain
+		FROM bookmark b
+		JOIN set_list s
+		ON b.bookmark=s.list_name
+		WHERE b.uid=#{uid}
+	</select>
 	
 
 </mapper>
