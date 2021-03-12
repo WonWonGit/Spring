@@ -43,7 +43,7 @@ public class CardController {
 		if(result==0) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('다시 시도 해 주세요.');</script>"); 
+			out.println("<script>alert('이미 존재하는 셋트명 입니다.');history.go(-1);</script>"); 
 			out.flush();
 		}
 		return "redirect:/card/create?uid="+cardVO.uid;
@@ -106,7 +106,7 @@ public class CardController {
 		if(result==0) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('다시 시도해 주세요.');</script>"); 
+			out.println("<script>alert('다시 시도해 주세요'); history.go(-1);</script>"); 
 			out.flush();
 		}
 		System.out.println(cardVO.uid+cardVO.list_name);
@@ -189,7 +189,7 @@ public class CardController {
 		if(result==0) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('다시 시도해 주세요.');</script>"); 
+			out.println("<script>alert('다시 시도해 주세요.');history.go(-1); </script>"); 
 			out.flush();
 		}
 		return "card/bookMarkList";

@@ -82,6 +82,17 @@ public class CardDAOImpl implements CardDAO{
 	}
 
 	@Override
+	public int deletSet(String list_name) throws Exception {
+		int result=0;
+		try {
+			result=sqlSession.delete("com.javalec.web.sample.cardMapper.deletSet",list_name);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	@Override
 	public int createNewTable(CardVO cardVO) throws Exception {
 		return sqlSession.update("com.javalec.web.sample.cardMapper.createNewTable",cardVO);
 	}
@@ -151,7 +162,7 @@ public class CardDAOImpl implements CardDAO{
 	public int deleteBookMark(int no) throws Exception {
 		int result=0;
 		try {
-			result=sqlSession.insert("com.javalec.web.sample.cardMapper.deleteBookMark",no);
+			result=sqlSession.delete("com.javalec.web.sample.cardMapper.deleteBookMark",no);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -163,6 +174,8 @@ public class CardDAOImpl implements CardDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("com.javalec.web.sample.cardMapper.myBookMark",uid);
 	}
+
+	
 
 
 	

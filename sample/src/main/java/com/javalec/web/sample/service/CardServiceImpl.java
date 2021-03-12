@@ -32,6 +32,12 @@ public class CardServiceImpl implements CardService{
 	public List<CardVO> selectSet(String uid) throws Exception {
 		return cardDAO.selectSet(uid);
 	}
+	
+	@Override
+	public int deleteSet(String list_name) throws Exception {
+		// TODO Auto-generated method stub
+		return cardDAO.deletSet(list_name);
+	}
 
 	@Override
 	public void createNewTable(CardVO cardVO) throws Exception {
@@ -118,6 +124,8 @@ public class CardServiceImpl implements CardService{
 		// TODO Auto-generated method stub
 		return cardDAO.myBookMark(uid);
 	}
+
+	
 
 	
 

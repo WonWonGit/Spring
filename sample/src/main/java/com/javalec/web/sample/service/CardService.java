@@ -11,6 +11,7 @@ public interface CardService {
 	public List<CardVO> getCard() throws Exception;
 	public int insertSet(CardVO cardVO) throws Exception;
 	public List<CardVO> selectSet(String uid) throws Exception;
+	public int deleteSet(String list_name) throws Exception;
 	public void createNewTable(CardVO cardVO) throws Exception;
 	public List<CardVO> showCard(HashMap<String, Object>map) throws Exception;
 	public List<CardVO> showCard2(HashMap<String, Object>map) throws Exception;
