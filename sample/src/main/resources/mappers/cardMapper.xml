@@ -49,6 +49,13 @@
 			#{list_explain},
 			#{privacy}
 		)
+		select
+			#{list_name},
+		from dual 
+		WHERE NOT EXIST
+		(SELECT list_name
+		   FROM set_list
+		   WHERE list_name=#{list_name})
 	</insert>
 	
 	<select id="selectSet"  
@@ -61,6 +68,12 @@
 		FROM set_list
 		WHERE uid=#{uid}			
 	</select>
+	
+	<delete id="deleteSet" parameterType="string">
+		DELETE 
+		FROM set_list 
+		WHERE list_name=#{list_name}
+	</delete>
 	
 	<update id="createNewTable" parameterType="com.javalec.web.sample.model.CardVO" > 
        CREATE TABLE IF NOT EXISTS ${uid} (
