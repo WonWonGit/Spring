@@ -42,7 +42,7 @@
 							aria-haspopup="true" aria-expanded="false"> My Card </a>
 							<div class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
-								<a class="dropdown-item" href="#">전체보기</a> 
+								<a class="dropdown-item" href="${pageContext.request.contextPath}/card/showAll">전체보기</a> 
 								<form:form method="post" name="form" id="form" 
 								role="form" modelAttribute="cardVO"
 								action="${pageContext.request.contextPath}/card/createNewTable">
