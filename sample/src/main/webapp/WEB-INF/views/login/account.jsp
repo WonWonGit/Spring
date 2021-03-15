@@ -77,7 +77,7 @@
 	<c:choose>
 		<c:when test="${!empty userInfo}">
 			<c:forEach var="list" items="${userInfo}">
-				<c:out value="${list.uid}"></c:out>
+				
 			</c:forEach>
 		</c:when>
 	</c:choose>
@@ -121,6 +121,6 @@
 			</c:forEach>
 		</c:when>
 	</c:choose>
-	<a href="${pageContext.request.contextPath}/card/test">ddd</a>
+	<jsp:include page="../main/footer.jsp" flush="true"></jsp:include>
 </body>
 </html>

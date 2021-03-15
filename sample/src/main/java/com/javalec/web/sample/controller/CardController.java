@@ -46,6 +46,7 @@ public class CardController {
 			out.println("<script>alert('이미 존재하는 셋트명 입니다.');history.go(-1);</script>"); 
 			out.flush();
 		}
+		System.out.println(cardVO.list_name);
 		return "redirect:/card/create?uid="+cardVO.uid;
 	}
 	
@@ -172,6 +173,19 @@ public class CardController {
 		}
 		System.out.println(cardVO.uid+cardVO.list_name);
 		return "card/card";
+	}
+	
+	@RequestMapping(value = "/deleteSet", method = RequestMethod.GET)
+	public String deleteSet(@ModelAttribute("cardVO") CardVO cardVO, Model model, HttpServletResponse response, RedirectAttributes redirectAttributes) throws Exception {
+		int result = cardService.deleteSet(cardVO);
+		if(result==0) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('다시 시도 해 주세요.');</script>");
+			out.flush();
+		}
+		System.out.println(cardVO.uid+cardVO.list_name);
+		return "redirect:/showAll";
 	}
 	
 	@RequestMapping(value = "/bookMarkList", method = RequestMethod.GET)

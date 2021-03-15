@@ -72,6 +72,16 @@
 		<!-- 카드 뒤집기 -->
 		<div class="w-75 text-right" style="margin-bottom:5%; position:relative;">
 		<c:choose>
+			<c:when test="${sessionScope.userId == param.uid}">
+				<form:form method="get" name="form_" id="form" class="form-card"
+				role="form" modelAttribute="cardVO" 
+				action="${pageContext.request.contextPath}/card/deleteSet">
+				<form:input path="list_name" value="${param.uid }" style="display:none;"/>
+				<form:input path="list_name" value="${param.list_name }" style="display:none;"/>
+				<form:input path="uid" value="${sessionScope.userId}" style="display:none;"/>
+				<button type="submit" class="btn btn-warning">셋트삭제</button>
+				</form:form>
+			</c:when>
 			<c:when test="${sessionScope.userId != param.uid}">
 			<c:choose>
 				<c:when test="${sessionScope.userId == null}">

@@ -34,9 +34,9 @@ public class CardServiceImpl implements CardService{
 	}
 	
 	@Override
-	public int deleteSet(String list_name) throws Exception {
+	public int deleteSet(CardVO cardVO) throws Exception {
 		// TODO Auto-generated method stub
-		return cardDAO.deletSet(list_name);
+		return cardDAO.deleteSet(cardVO);
 	}
 
 	@Override

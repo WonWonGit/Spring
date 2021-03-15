@@ -15,7 +15,7 @@ public interface CardDAO {
 	public int updateCard(CardVO cardVO) throws Exception;
 	public int deleteCard(CardVO cardVO) throws Exception;
 	public int insertSet(CardVO cardVO) throws Exception;
-	public int deletSet(String list_name) throws Exception;
+	public int deleteSet(CardVO cardVO) throws Exception;
 	public List<CardVO> selectSet(String uid) throws Exception;
 	public int createNewTable(CardVO cardVO) throws Exception;
 	public List<CardVO> showCard(HashMap<String, Object> map) throws Exception;

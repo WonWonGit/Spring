@@ -82,10 +82,10 @@ public class CardDAOImpl implements CardDAO{
 	}
 
 	@Override
-	public int deletSet(String list_name) throws Exception {
+	public int deleteSet(CardVO cardVO) throws Exception {
 		int result=0;
 		try {
-			result=sqlSession.delete("com.javalec.web.sample.cardMapper.deletSet",list_name);
+			result=sqlSession.delete("com.javalec.web.sample.cardMapper.deleteSet",cardVO);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -59,9 +59,11 @@
 	.form-group{
 		margin:0 auto;
 	}
+
 </style>
 <article>
-<div class="container col-md-6" role="main">
+<jsp:include page="../main/header.jsp" flush="true"></jsp:include>
+<div class="container col-md-6" role="main" style="margin-top:10%;">
 	<div class="card">
 	<div class="card-header">
 	<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -156,5 +158,6 @@
 		</div>
 	</div>
 	</div>
-</div>	
+</div>
+<jsp:include page="../main/footer.jsp" flush="true"></jsp:include>	
 </article>

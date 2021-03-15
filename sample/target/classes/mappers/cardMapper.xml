@@ -42,17 +42,14 @@
 	</delete>
 	
 	<insert id="insertSet" parameterType="com.javalec.web.sample.model.CardVO">
-		INSERT INTO set_list
-		VALUES(
+		INSERT INTO set_list(uid, list_name, list_explain, privacy)
+		select
 			#{uid},
 			#{list_name},
 			#{list_explain},
 			#{privacy}
-		)
-		select
-			#{list_name},
 		from dual 
-		WHERE NOT EXIST
+		WHERE NOT EXISTS
 		(SELECT list_name
 		   FROM set_list
 		   WHERE list_name=#{list_name})
@@ -69,7 +66,7 @@
 		WHERE uid=#{uid}			
 	</select>
 	
-	<delete id="deleteSet" parameterType="string">
+	<delete id="deleteSet" parameterType="com.javalec.web.sample.model.CardVO">
 		DELETE 
 		FROM set_list 
 		WHERE list_name=#{list_name}
@@ -154,7 +151,7 @@
 			#{uid},
 			#{bookmark}
 		from dual 
-		WHERE NOT EXIST
+		WHERE NOT EXISTS
 		(SELECT bookmark,uid 
 		   FROM bookmark 
 		   WHERE uid=#{uid} and bookmark=#{bookmark} )
