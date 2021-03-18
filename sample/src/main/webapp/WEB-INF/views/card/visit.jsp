@@ -28,6 +28,7 @@
 <!-- 부트스트랩 END -->
 </head>
 <style>
+html{ margin:0; padding:0; width:100%; height:100% }
 .book{
 		position:relative;
 		margin-bottom:10%;
@@ -46,6 +47,10 @@
 }
 .book_explain{
 	margin-top:5%;
+}
+.footer2{
+	postion:absolute;
+	bottom:0;
 }
 </style>
 <body>
@@ -85,6 +90,9 @@
 			</div>
 		</c:when>	
 	</c:choose>
+</div>
+<div class="footer2">
+<jsp:include page="../main/footer.jsp" flush="true"></jsp:include>	
 </div>
 </body>
 </html>

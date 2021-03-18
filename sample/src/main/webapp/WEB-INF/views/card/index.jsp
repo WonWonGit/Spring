@@ -28,6 +28,9 @@
 <!-- 부트스트랩 END -->
 <link href="<c:url value="/resources/css/index_style.css" />" rel="stylesheet">
 </head>
+<style>
+html{ margin:0; padding:0; width:100%; height:100% }
+</style>
 <script>
 function visit(bid){
 	var url = "${pageContext.request.contextPath}/card/userCardList";
@@ -182,5 +185,6 @@ function start(){
 			</c:choose>
 		</div>
 	</div>
+	<jsp:include page="../main/footer.jsp" flush="true"></jsp:include>
 </body>
 </html>

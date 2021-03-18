@@ -65,5 +65,6 @@
 		</div>
 		</c:when>
 	</c:choose>
+	<jsp:include page="../main/footer.jsp" flush="true"></jsp:include>	
 </body>
 </html>

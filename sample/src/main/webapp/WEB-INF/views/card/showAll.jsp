@@ -30,6 +30,7 @@
 <!-- 부트스트랩 END -->
 </head>
 <style>
+html{ margin:0; padding:0; width:100%; height:100% }
 .book{
 		position:relative;
 		margin-bottom:10%;
@@ -157,5 +158,6 @@ function setlink(list_name){
 			</c:when>
 		</c:choose>
 		</div>
+		<jsp:include page="../main/footer.jsp" flush="true"></jsp:include>	
 </body>
 </html>

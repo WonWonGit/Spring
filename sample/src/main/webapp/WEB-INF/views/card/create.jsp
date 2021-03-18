@@ -35,6 +35,7 @@
 	}
 </script>
 <style>
+html{ margin:0; padding:0; width:100%; height:100% }
 .create {
 	margin-top: 5%;
 	margin-bottom: 5%;
@@ -108,6 +109,6 @@
 		</div>
 		</c:when>
 	</c:choose>
-
+	<jsp:include page="../main/footer.jsp" flush="true"></jsp:include>	
 </body>
 </html>

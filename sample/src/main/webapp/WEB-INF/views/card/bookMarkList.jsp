@@ -94,7 +94,7 @@ function link(bookMarkNum){
 			</c:when>
 		</c:choose>
 	</div>
-	
+	<jsp:include page="../main/footer.jsp" flush="true"></jsp:include>	
 
 
 

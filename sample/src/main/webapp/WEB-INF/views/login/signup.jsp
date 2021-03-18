@@ -59,7 +59,7 @@
 	.form-group{
 		margin:0 auto;
 	}
-
+html{ margin:0; padding:0; width:100%; height:100% }
 </style>
 <article>
 <jsp:include page="../main/header.jsp" flush="true"></jsp:include>
