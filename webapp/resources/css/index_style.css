@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+
+.sub>span {
+	color: #008B8B;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+    *{margin:0;padding:0;}
+    .card-ul,.card-li{list-style:none;}
+    .slide{height:350px;overflow:hidden;position:relative;}
+    .slide .card-ul{width:calc(100% * 3);display:flex;transition:1s;}
+    .slide .card-li{width:calc(100% / 4);
+    		margin-left:10px;
+    		margin-right:10px;
+    }
+    .sl{
+    	padding-top:40px;
+    	background:honeydew;
+    }
+    .slide input{display:none;}
+    .slide .bullet{position:absolute;left:0;right:0;text-align:center;z-index:10;}
+    .slide .bullet label{width:10px;height:10px;border-radius:10px;border:2px solid #666;display:inline-block;background:#fff;font-size:0;transition:0.5s;cursor:pointer;}
+    /* 슬라이드 조작 */
+    #pos1:checked ~ .card-ul{margin-left:0;}
+    #pos2:checked ~ .card-ul{margin-left:-100%;}
+    #pos3:checked ~ .card-ul{margin-left:-200%;}
+    #pos4:checked ~ .card-ul{margin-left:0;}
+   
+    /* bullet 조작 */
+    #pos1:checked ~ .bullet label:nth-child(1),
+    #pos2:checked ~ .bullet label:nth-child(2),
+    #pos3:checked ~ .bullet label:nth-child(3),
+    #pos4:checked ~ .bullet label:nth-child(4){background:#666;}
+	.slide .part-ul .part-li{ display:inline-block;}	
+	.part-ul .part-li:nth-child(1){background:#666; color:#fff;}
+	.part-ul .part-li:nth-child(2){background:crimson; color:#fff;}
+	.part-ul .part-li:nth-child(3){background:darkorange; color:#fff;}
+	.part-ul .part-li:nth-child(4){background:seagreen; color:#fff;}
+	.part-ul .part-li:nth-child(5){background:#483d8b; color:#fff; margin-top:10px;}  
+	.card-li:hover{
+	  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	}
+.start{
+	background-image:url('../img/background.jpg');
+	padding:10%;
+}
+.start h2{
+	color:#fff;
+}
+.main-slide{
+	 height:200px; padding:30px;
+}
+.first{
+    border:1px solid black;
+}
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: gray;
+}
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: gray;
+}
